@@ -16,10 +16,10 @@ const Questions = () => {
   const {
     question_category,
     question_difficulty,
-    question_type,
     amount_of_question,
     score,
   } = useSelector((state) => state);
+
 
   let apiUrl = `/api.php?amount=${amount_of_question}`
 
@@ -27,7 +27,7 @@ const Questions = () => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [options, setOptions] = useState([]);
   
-  const history = useNavigate()
+  const navigate = useNavigate()
   const dispatch = useDispatch();
 
   if (question_category) {
@@ -36,9 +36,7 @@ const Questions = () => {
   if (question_difficulty) {
     apiUrl = apiUrl.concat(`&difficulty=${question_difficulty}`);
   }
-  if (question_type) {
-    apiUrl = apiUrl.concat(`&type=${question_type}`);
-  }
+  
 
   useEffect(() => {
     if (response?.results.length) {
@@ -70,19 +68,19 @@ const Questions = () => {
     if (questionIndex + 1 < response.results.length) {
       setQuestionIndex(questionIndex + 1);
     } else {
-      history("/score");
+      navigate("/score");
     }
   };
 
   return (
     <Box>
       <Typography variant="h4">Questions {questionIndex + 1}</Typography>
-      <Typography mt={5}>
+      <Typography mt={5} >
         {decode(response.results[questionIndex].question)}
       </Typography>
       {options.map((data, id) => (
-        <Box mt={2} key={id}>
-          <Button onClick={handleClickAnswer} variant="contained">
+        <Box mt={2} key={id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <Button onClick={handleClickAnswer} variant="contained" color='warning'>
             {decode(data)}
           </Button>
         </Box>

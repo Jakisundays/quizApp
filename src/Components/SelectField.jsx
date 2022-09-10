@@ -3,7 +3,7 @@ import { Box } from '@mui/system'
 import React from 'react'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { handleCategoryChange, handleDifficultyChange, handleTypeChange } from '../Redux/actions';
+import { handleCategoryChange, handleDifficultyChange } from '../Redux/actions';
 
 const SelectField = (props) => {
     
@@ -17,11 +17,8 @@ const SelectField = (props) => {
             case 'Category':
             dispatch(handleCategoryChange(e.target.value));
             break;
-            case "Difficulty":
+            case 'Difficulty':
             dispatch(handleDifficultyChange(e.target.value));
-            break;
-            case "Type":
-            dispatch(handleTypeChange(e.target.value));
             break;
             default:
             return;
@@ -29,17 +26,17 @@ const SelectField = (props) => {
     }
 
   return (
-    <Box mt={3} width='100%'>
-        <FormControl fullWidth  size='small'>
-            <InputLabel>{label}</InputLabel>
-            <Select value={value} label={label} onChange={handleChange}>
-                {options.map(({ id, name }) => (
-                <MenuItem value={id} key={id}>
-                {name}
-                </MenuItem>
-            ))}
-            </Select>
-        </FormControl>
+    <Box mt={3} width="100%">
+      <FormControl size="small" fullWidth>
+        <InputLabel>{label}</InputLabel>
+        <Select value={value} label={label} onChange={handleChange}>
+          {options.map(({ id, name }) => (
+            <MenuItem value={id} key={id}>
+              {name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
     </Box>
   )
 }

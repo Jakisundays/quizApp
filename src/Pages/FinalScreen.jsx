@@ -7,13 +7,13 @@ import { handleAmountChange, handleScoreChange } from "../Redux/actions";
 
 const FinalScreen = () => {
   const disptach = useDispatch();
-  const history = useNavigate();
+  const navigate = useNavigate();
   const { score } = useSelector((state) => state);
 
   const handleBackToSettings = () => {
     disptach(handleScoreChange(0));
     disptach(handleAmountChange(50));
-    history("/");
+    navigate("/quizApp");
   };
 
   return (

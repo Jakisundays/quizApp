@@ -8,25 +8,25 @@ import {
 
   export const handleCategoryChange = (payload) => ({
     type: CHANGE_CATEGORY,
-    payload
+    payload,
   });
   
   export const handleDifficultyChange = (payload) => ({
     type: CHANGE_DIFFICULTY,
-    payload
+    payload,
   });
   
   export const handleTypeChange = (payload) => ({
     type: CHANGE_TYPE,
-    payload
+    payload,
   });
   
   export const handleAmountChange = (payload) => ({
     type: CHANGE_AMOUNT,
-    payload
+    payload,
   });
   
   export const handleScoreChange = (payload) => ({
     type: CHANGE_SCORE,
-    payload
+    payload,
   });
